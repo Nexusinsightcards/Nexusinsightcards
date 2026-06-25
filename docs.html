@@ -31,6 +31,7 @@
 </head>
 <body class="bg-nexusDark text-gray-300 font-sans antialiased selection:bg-nexusYellow selection:text-nexusDark flex flex-col min-h-screen">
 
+    <!-- Minimal Navbar -->
     <nav class="sticky top-0 z-50 bg-nexusDark/90 backdrop-blur-md border-b border-gray-800 px-6 py-4 flex justify-between items-center">
         <a href="index.html" class="flex items-center space-x-3 group cursor-pointer transition">
             <img src="5164c31f-aa0e-4b7f-a5d1-6803acc0dd2b.png" alt="Logo" class="h-8 w-8 rounded shadow-[0_0_10px_rgba(255,185,0,0.3)]">
@@ -41,8 +42,10 @@
         </div>
     </nav>
 
+    <!-- Main Container -->
     <div class="flex flex-1 container mx-auto px-4 md:px-6 py-8">
         
+        <!-- Sidebar Navigation -->
         <aside class="hidden md:block w-64 shrink-0 pr-8">
             <div class="sticky top-24">
                 <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Getting Started</h4>
@@ -54,6 +57,7 @@
 
                 <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">DAX Recipes (Pro)</h4>
                 <ul class="space-y-3 mb-8 text-sm">
+                    <li><a href="#dax-aggregations" class="hover:text-nexusYellow transition">Smart Base Measures</a></li>
                     <li><a href="#dax-json" class="hover:text-nexusYellow transition">Dynamic JSON Config</a></li>
                     <li><a href="#dax-insights" class="hover:text-nexusYellow transition">Smart HTML Insights</a></li>
                     <li><a href="#dax-formatting" class="hover:text-nexusYellow transition">Dynamic Formatting & Units</a></li>
@@ -67,11 +71,13 @@
             </div>
         </aside>
 
+        <!-- Documentation Content -->
         <main class="flex-1 max-w-4xl bg-nexusGray/30 p-8 rounded-2xl border border-gray-800">
             
             <h1 class="text-4xl font-extrabold text-white mb-4">NexusInsightCards Documentation</h1>
             <p class="text-lg text-gray-400 mb-12">Learn how to build high-density, actionable executive dashboards in minutes using our enterprise-grade Power BI custom visual and advanced DAX patterns.</p>
 
+            <!-- Data Roles Configuration -->
             <section id="data-roles" class="mb-16">
                 <h2 class="text-2xl font-bold text-white mb-4 flex items-center"><span class="text-nexusYellow mr-2">#</span> Complete Data Roles Configuration</h2>
                 <div class="overflow-x-auto bg-nexusGray p-2 rounded-xl border border-gray-700">
@@ -134,6 +140,7 @@
                 </div>
             </section>
 
+            <!-- Format Pane Settings -->
             <section id="format-pane" class="mb-16">
                 <h2 class="text-2xl font-bold text-white mb-4 flex items-center"><span class="text-nexusYellow mr-2">#</span> Format Pane Settings</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -175,8 +182,44 @@
             <h2 class="text-3xl font-extrabold text-white mb-6">Enterprise DAX Recipes</h2>
             <p class="text-gray-400 mb-8">Copy and paste these enterprise-grade DAX patterns into your model to unlock the visual's maximum potential.</p>
 
+            <!-- DAX: Smart Aggregations -->
+            <section id="dax-aggregations" class="mb-12">
+                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">1.</span> Smart Base Measures (Mixed Aggregations)</h3>
+                <p class="text-sm text-gray-400 mb-4">When using an unpivoted Master Dataset for multiple KPIs, you cannot simply SUM percentages. Use these dynamic base measures in the <strong>Data Field</strong> and <strong>Target Value</strong> roles to automatically apply AVERAGE to rates and SUM to volumes.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="relative bg-nexusDark p-4 rounded-xl border border-gray-700 group code-container">
+                        <button onclick="copyCode('daxActual')" class="absolute top-2 right-2 bg-gray-800 hover:bg-nexusYellow hover:text-nexusDark text-gray-400 px-2 py-1 rounded text-[10px] font-bold transition z-10">Copy Actual</button>
+                        <pre id="daxActual" class="text-xs font-mono text-green-400 pt-6 pb-2">
+Total Actual = 
+VAR SelectedFormat = SELECTEDVALUE('Nexus_Master_Dataset'[Format_Type])
+
+RETURN
+    IF(
+        SelectedFormat IN {"Percent", "Decimal"},
+        AVERAGE('Nexus_Master_Dataset'[Actual_Value]),
+        SUM('Nexus_Master_Dataset'[Actual_Value])
+    )</pre>
+                    </div>
+                    <div class="relative bg-nexusDark p-4 rounded-xl border border-gray-700 group code-container">
+                        <button onclick="copyCode('daxTarget')" class="absolute top-2 right-2 bg-gray-800 hover:bg-nexusYellow hover:text-nexusDark text-gray-400 px-2 py-1 rounded text-[10px] font-bold transition z-10">Copy Target</button>
+                        <pre id="daxTarget" class="text-xs font-mono text-green-400 pt-6 pb-2">
+Total Target = 
+VAR SelectedFormat = SELECTEDVALUE('Nexus_Master_Dataset'[Format_Type])
+
+RETURN
+    IF(
+        SelectedFormat IN {"Percent", "Decimal"},
+        AVERAGE('Nexus_Master_Dataset'[Target_Value]),
+        SUM('Nexus_Master_Dataset'[Target_Value])
+    )</pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DAX: JSON Config -->
             <section id="dax-json" class="mb-12">
-                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">1.</span> Dynamic JSON Configuration</h3>
+                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">2.</span> Dynamic JSON Configuration</h3>
                 <p class="text-sm text-gray-400 mb-4">Drop this measure into the <strong>Dynamic Configuration (JSON)</strong> role to independently control the icon, shadow, and chart type for each specific KPI.</p>
                 <div class="relative bg-nexusDark p-4 rounded-xl border border-gray-700 group code-container">
                     <button onclick="copyCode('jsonConfig')" class="absolute top-3 right-3 bg-gray-800 hover:bg-nexusYellow hover:text-nexusDark text-gray-400 px-3 py-1 rounded text-xs font-bold transition z-10">Copy Code</button>
@@ -214,8 +257,9 @@ RETURN
                 </div>
             </section>
 
+            <!-- DAX: HTML Insights -->
             <section id="dax-insights" class="mb-12">
-                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">2.</span> Smart HTML Insights (Reference Tooltip)</h3>
+                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">3.</span> Smart HTML Insights (Reference Tooltip)</h3>
                 <p class="text-sm text-gray-400 mb-4">Our visual natively renders HTML. Use this measure to generate dynamic, color-coded narrative footers based on performance variance.</p>
                 <div class="relative bg-nexusDark p-4 rounded-xl border border-gray-700 group code-container">
                     <button onclick="copyCode('htmlInsights')" class="absolute top-3 right-3 bg-gray-800 hover:bg-nexusYellow hover:text-nexusDark text-gray-400 px-3 py-1 rounded text-xs font-bold transition z-10">Copy Code</button>
@@ -278,8 +322,9 @@ RETURN
                 </div>
             </section>
 
+            <!-- DAX: Formatting & Units -->
             <section id="dax-formatting" class="mb-12">
-                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">3.</span> Dynamic Formatting & Units</h3>
+                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">4.</span> Dynamic Formatting & Units</h3>
                 <p class="text-sm text-gray-400 mb-4">Pass these two measures into the <strong>Dynamic Format String</strong> and <strong>Unit Label</strong> roles to allow cards in the same grid to display mixing Data Types (e.g., USD vs %).</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -340,8 +385,9 @@ RETURN
                 </div>
             </section>
 
+            <!-- DAX: Border Colors -->
             <section id="dax-colors" class="mb-16">
-                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">4.</span> Conditional Border Colors</h3>
+                <h3 class="text-xl font-bold text-white mb-2 flex items-center"><span class="text-nexusYellow mr-2">5.</span> Conditional Border Colors</h3>
                 <p class="text-sm text-gray-400 mb-4">Map this to the <strong>Conditional Border Color</strong> role to group your metrics visually by domain (e.g., Sales=Blue, HR=Cyan, Inventory=Red).</p>
                 <div class="relative bg-nexusDark p-4 rounded-xl border border-gray-700 group code-container">
                     <button onclick="copyCode('borderColors')" class="absolute top-3 right-3 bg-gray-800 hover:bg-nexusYellow hover:text-nexusDark text-gray-400 px-3 py-1 rounded text-xs font-bold transition z-10">Copy Code</button>
@@ -387,6 +433,7 @@ RETURN
                 </div>
             </section>
 
+            <!-- Licensing -->
             <section id="licensing" class="mb-16">
                 <h2 class="text-2xl font-bold text-white mb-4 flex items-center"><span class="text-nexusYellow mr-2">#</span> License & Activation</h2>
                 <div class="bg-gradient-to-br from-nexusGray to-[#2d2d3b]/50 p-6 rounded-xl border-l-4 border-nexusYellow">
@@ -403,6 +450,7 @@ RETURN
         </main>
     </div>
 
+    <!-- Script for Copy Code functionality -->
     <script>
         function copyCode(elementId) {
             const textToCopy = document.getElementById(elementId).innerText;
