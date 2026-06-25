@@ -24,14 +24,16 @@
 </head>
 <body class="bg-nexusDark text-white font-sans antialiased selection:bg-nexusYellow selection:text-nexusDark">
 
+    <!-- Navbar -->
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center border-b border-gray-800">
-        <div class="flex items-center space-x-3 group cursor-pointer">
+        <div class="flex items-center space-x-3 group cursor-pointer transition">
             <img src="5164c31f-aa0e-4b7f-a5d1-6803acc0dd2b.png" alt="Nexus Insight Studio Logo" class="h-10 w-10 rounded-md shadow-[0_0_15px_rgba(255,185,0,0.4)] animate-pulse group-hover:animate-none group-hover:scale-105 transition-all duration-300">
             <span class="text-xl font-bold tracking-tight transition duration-300 group-hover:text-nexusYellow">Nexus<span class="text-nexusYellow group-hover:text-white">InsightCards</span></span>
         </div>
         <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-300">
             <a href="#features" class="hover:text-nexusYellow transition">Features</a>
             <a href="#preview" class="hover:text-nexusYellow transition">Dashboard Demo</a>
+            <a href="docs.html" class="text-nexusYellow hover:text-white transition">Documentation</a>
             <a href="#pricing" class="hover:text-nexusYellow transition">Enterprise License</a>
         </div>
         <a href="https://github.com/NexusInsightStudio/NexusInsightCards/releases" target="_blank" class="bg-nexusYellow text-nexusDark px-5 py-2 rounded-md font-bold hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30">
@@ -39,6 +41,7 @@
         </a>
     </nav>
 
+    <!-- Hero Section -->
     <section class="container mx-auto px-6 py-20 text-center md:py-32 relative">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-600/10 rounded-full blur-[100px] pointer-events-none"></div>
         
@@ -63,6 +66,7 @@
         </div>
     </section>
 
+    <!-- Dashboard Preview (The Video Player via CDN) -->
     <section id="preview" class="container mx-auto px-6 py-10">
         <div class="relative rounded-2xl p-2 bg-gradient-to-b from-gray-700 to-nexusDark shadow-[0_0_40px_rgba(255,185,0,0.1)] group overflow-hidden">
             <video autoplay loop muted playsinline class="rounded-xl w-full border border-gray-800 shadow-2xl transition duration-500 group-hover:border-nexusYellow">
@@ -73,6 +77,7 @@
         </div>
     </section>
 
+    <!-- Features -->
     <section id="features" class="container mx-auto px-6 py-24">
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Engineered for Data Professionals</h2>
         
@@ -95,7 +100,7 @@
 
             <div class="bg-nexusGray p-8 rounded-xl border border-gray-700 hover:border-nexusYellow hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,185,0,0.15)] transition-all duration-300 shadow-lg group">
                 <div class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center mb-6 text-nexusYellow group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08-.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <h3 class="text-xl font-bold mb-3">Dynamic DAX Formatting</h3>
                 <p class="text-gray-400 text-sm leading-relaxed">Full support for format strings and dynamic unit labels. Each card independently displays $, %, or quantity based on data.</p>
@@ -111,6 +116,7 @@
         </div>
     </section>
 
+    <!-- Pricing / Licensing -->
     <section id="pricing" class="container mx-auto px-6 py-24 border-t border-gray-800">
         <div class="text-center max-w-2xl mx-auto mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Transparent Enterprise Licensing</h2>
@@ -119,6 +125,7 @@
 
         <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
             
+            <!-- Free Tier -->
             <div class="flex-1 bg-nexusDark border border-gray-700 p-8 rounded-2xl flex flex-col hover:border-gray-500 transition-colors duration-300">
                 <h3 class="text-2xl font-bold mb-2">Community</h3>
                 <p class="text-nexusYellow font-bold text-3xl mb-6">Free</p>
@@ -132,6 +139,7 @@
                 <a href="https://github.com/NexusInsightStudio/NexusInsightCards/releases" target="_blank" class="block text-center w-full bg-transparent border border-gray-600 hover:bg-gray-800 text-white font-bold py-3 rounded-md transition mt-auto">Download Free</a>
             </div>
 
+            <!-- Pro Tier -->
             <div class="flex-1 bg-nexusGray border-2 border-nexusYellow p-8 rounded-2xl relative transform md:-translate-y-4 shadow-[0_20px_50px_rgba(255,185,0,0.15)] flex flex-col hover:scale-[1.02] transition-transform duration-300">
                 <div class="absolute top-0 right-0 bg-nexusYellow text-nexusDark text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl uppercase tracking-wider">Enterprise</div>
                 <h3 class="text-2xl font-bold mb-2">Nexus [PRO]</h3>
@@ -158,6 +166,7 @@
 
     </section>
 
+    <!-- Footer -->
     <footer class="border-t border-gray-800 bg-nexusDark pt-10 pb-6 text-center">
         <div class="text-gray-500 text-sm">
             <p>&copy; 2026 Nexus Insight Studio. All rights reserved.</p>
